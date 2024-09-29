@@ -63,34 +63,27 @@ averagechange = round(total_change / len(changes_in_profit),2)
 
 
 #Print output
-print("")
-print("Financial Analysis")
-print("")
-print("----------------------------")
-print("")
-print(f"Total Months: {total_months}")
-print("")
-print(f"Total: ${round(total_net)}")
-print("")
-print(f"Average Change: ${averagechange}")
-print("")
-print(f"Greatest Increase in Profits: {maxmonth} (${greatestincrease})")
-print("")
-print(f"Greatest Decrease in Profits: {minmonth} (${greatestdecrease})")
-print("")
+print("\n")
+print("Financial Analysis\n")
+print("----------------------------\n")
+print(f"Total Months: {total_months}\n")
+print(f"Total: ${round(total_net)}\n")
+print(f"Average Change: ${averagechange}\n")
+print(f"Greatest Increase in Profits: {maxmonth} (${greatestincrease})\n")
+print(f"Greatest Decrease in Profits: {minmonth} (${greatestdecrease})\n")
+
 
 
 # Write the results that will be inputted into txt file
-lines = ["Financial Analysis","",
-"----------------------------","",
-f"Total Months: {total_months}","",
-f"Total: ${round(total_net)}","",
-f"Average Change: ${averagechange}","",
-f"Greatest Increase in Profits: {maxmonth} (${greatestincrease})","",
+lines = ["","Financial Analysis","----------------------------",
+f"Total Months: {total_months}",
+f"Total: ${round(total_net)}",
+f"Average Change: ${averagechange}",
+f"Greatest Increase in Profits: {maxmonth} (${greatestincrease})",
 f"Greatest Decrease in Profits: {minmonth} (${greatestdecrease})"]
 
 #text file output
 with open(file_to_output, "w") as txt:
     for line in lines:
-        txt.write(str(line))
+        txt.write(str(f"{line}\n"))
         txt.write('\n')
