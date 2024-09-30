@@ -1,6 +1,6 @@
 "PyBank Script"
 
-# Dependencies
+# Import csv and os modules
 import csv
 import os
 
@@ -10,8 +10,9 @@ file_to_output = os.path.join("analysis", "budget_analysis.txt")  # Output file 
 
 # Defining variables and lists
 total_net = 0
-total_change = 0
-average_of_changes = 0
+total_months = 0
+greatestincrease = 0    
+greatestdecrease = 0
 profitlosses = []
 months = []
 changes_in_profit = []
@@ -25,41 +26,33 @@ with open(file_to_load, 'r') as financial_data:
     header = next(csvreader)
 
     # Extract Date into months list, extract Profits/Losses into profitlosses list
-    # Add all values in Proft/Losses into total_net variable
+    # Add one for each row read into total_months, and add all values in Proft/Losses into total_net variable
     for row in csvreader:
         months.append(row[0])
         profitlosses.append(int(row[1]))
         total_net+= int(row[1])
+        total_months+= 1
 
-# Use len() to enter number of months into total_months variable
-# Set variables to find greatest profit increase/decrease
-total_months = len(months)  
-greatestincrease = 0    
-greatestdecrease = 0
 
-# Loop through profitlosses list, find the change in profit/loss for each month, append results to changes_in_profit list
+# Loop through profitlosses list, find the change in profit/loss for each month starting with Feb-10, append results to changes_in_profit list
 for x in range(1,len((profitlosses))):
     changes_in_profit.append(int(profitlosses[x] - profitlosses[x-1]))
 
 
-# Loop through changes_in_profit list to find largest/lowest numbers and their indices
+# Loop through changes_in_profit list to find largest/lowest numbers and their indices, add associated months to max/minmonth variables 
 for x in changes_in_profit:
     if x > greatestincrease:
         greatestincrease = round(x)
         maxindex = changes_in_profit.index(x)
+        maxmonth = months[maxindex+1] # +1 = row difference between total_months + changes_in_profit
     if x < greatestdecrease:
         greatestdecrease = round(x)
         minindex = changes_in_profit.index(x)
+        minmonth = months[minindex+1]
     
 
-# define month associated with greatest inc, add 1 to index since len(changes_in_profit) = 85
-maxmonth = months[maxindex+1]
-minmonth = months[minindex+1]
-
 # Calculate average of the changes in profits/losses
-total_change = sum(changes_in_profit)
-averagechange = round(total_change / len(changes_in_profit),2)
-
+averagechange = round(sum(changes_in_profit) / len(changes_in_profit),2)
 
 
 #Print output
