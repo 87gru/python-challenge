@@ -9,12 +9,12 @@ file_to_load = os.path.join("Resources", "election_data.csv")  # Input file path
 file_to_output = os.path.join("analysis", "election_analysis.txt")  # Output file path
 
 # Set variables and lists
-total_votes = 0
-winnercount = 0
-percent_calc = 0
-candidate = []
-vote_count = []
-vote_percent = []
+total_votes = 0 # Counter for votes
+winnercount = 0 # Variable for votes for winner
+percent_calc = 0 # Variable for vote percentage calculation
+candidate = [] # List for candidates
+vote_count = [] # List for vote counts for each candidate
+vote_percent = [] # List for percentages
 
 
 # Open the CSV file
@@ -35,7 +35,7 @@ with open(file_to_load, 'r') as election_data:
             vote_count[index]+= 1 # Add vote to index that matches candidate index in candidate list
 
 
-# Loop through vote_count list and calculate percentage, then append to vote_percent list. Conditional statement to define winner and highest vote count
+# Loop through three values in vote_count list and calculate percentage, then append to vote_percent list. Conditional statement to define winner and highest vote count
 for votes in vote_count:
     percent_calc = round(((votes / total_votes) * 100),3)
     vote_percent.append(percent_calc)
