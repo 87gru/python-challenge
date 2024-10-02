@@ -9,13 +9,13 @@ file_to_load = os.path.join("Resources", "budget_data.csv")  # Input file path
 file_to_output = os.path.join("analysis", "budget_analysis.txt")  # Output file path
 
 # Defining variables and lists
-total_net = 0
-total_months = 0
-greatestincrease = 0    
-greatestdecrease = 0
-profitlosses = []
-months = []
-changes_in_profit = []
+total_net = 0 # Profit/Losses column values will be added here
+total_months = 0 # Months counter
+greatestincrease = 0 # Variable for greatest increase value
+greatestdecrease = 0 # Variable for greatest decrease value
+profitlosses = [] # List for profit/losses column to calculate change over the months
+months = [] # List for months to calculate changes in profits
+changes_in_profit = [] # List to deposit changes in profits
 
 
 # Open and read the csv
@@ -34,7 +34,8 @@ with open(file_to_load, 'r') as financial_data:
         total_months+= 1
 
 
-# Loop through profitlosses list, find the change in profit/loss for each month starting with Feb-10, append results to changes_in_profit list
+# Loop through profitlosses list starting at first value till find value (detemrined with use of len()) 
+# Find the change in profit/loss for each month starting with Feb-10, append results to changes_in_profit list
 for x in range(1,len((profitlosses))):
     changes_in_profit.append(int(profitlosses[x] - profitlosses[x-1]))
 
