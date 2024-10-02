@@ -68,7 +68,7 @@ print(f"Greatest Decrease in Profits: {minmonth} (${greatestdecrease})\n")
 
 
 
-# Write the results that will be inputted into txt file
+# Write the results into lines list which will be inputted into txt file
 lines = ["","Financial Analysis","----------------------------",
 f"Total Months: {total_months}",
 f"Total: ${round(total_net)}",
