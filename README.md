@@ -16,6 +16,7 @@ PyPoll
 
 References used:
 For clarifying text file output: https://www.pythontutorial.net/python-basics/python-write-text-file/
+
 Using '\n' for new lines: https://www.idtech.com/blog/what-is-n-in-python
 
 
