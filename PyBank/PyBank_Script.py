@@ -34,7 +34,7 @@ with open(file_to_load, 'r') as financial_data:
         total_months+= 1
 
 
-# Loop through profitlosses list starting at first value till find value (detemrined with use of len()) 
+# Loop through profitlosses list starting at first index till final index in list (detemrined with use of len()) 
 # Find the change in profit/loss for each month starting with Feb-10, append results to changes_in_profit list
 for x in range(1,len((profitlosses))):
     changes_in_profit.append(int(profitlosses[x] - profitlosses[x-1]))
